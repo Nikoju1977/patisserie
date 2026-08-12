@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Compagnons Pâtissiers · Reims — Maisons d'accueil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Marcellus&family=EB+Garamond:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette — Reims art déco / biscuit rose */
+    --encre:#1c1420;        /* aubergine nuit */
+    --encre-2:#271a2e;
+    --bordeaux:#5c1a2e;     /* lie de vin */
+    --or:#c9a24b;           /* or champagne */
+    --or-clair:#e6cd8a;
+    --creme:#f6efe3;        /* papier crème */
+    --creme-2:#efe4d2;
+    --rose:#e29aa4;         /* biscuit rose de Reims */
+    --rose-fonce:#c26b78;
+    --texte:#efe6d8;
+    --texte-sombre:#241a2c;
+    --ombre:rgba(20,10,25,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'EB Garamond',serif;
+    background:var(--encre);
+    color:var(--texte);
+    min-height:100dvh;
+    padding-bottom:env(safe-area-inset-bottom);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1.02}
+  .eyebrow{
+    font-family:'Marcellus',serif;text-transform:uppercase;
+    letter-spacing:.34em;font-size:.74rem;color:var(--or);
+  }
+  .mono{font-family:'Space Mono',monospace}
+  a{color:inherit}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100dvh;display:flex;align-items:center;
+    justify-content:center;text-align:center;padding:5rem 1.4rem;overflow:hidden;
+  }
+  .sunburst{
+    position:absolute;inset:-40% -40% auto -40%;height:150vmax;aspect-ratio:1;
+    left:50%;top:50%;translate:-50% -50%;
+    background:conic-gradient(from 0deg,
+      transparent 0 6deg, rgba(201,162,75,.10) 6deg 12deg,
+      transparent 12deg 18deg, rgba(201,162,75,.10) 18deg 24deg);
+    border-radius:50%;
+    animation:spin 140s linear infinite;
+    z-index:0;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:radial-gradient(ellipse at center,transparent 20%,var(--encre) 78%);
+  }
+  @keyframes spin{to{rotate:360deg}}
+  .hero-inner{position:relative;z-index:2;max-width:780px}
+  .ruban{
+    display:inline-block;margin-bottom:1.6rem;padding:.35rem 1.3rem;
+    background:linear-gradient(90deg,var(--rose-fonce),var(--rose));
+    color:#2a1016;border-radius:2px;box-shadow:0 6px 18px var(--ombre);
+  }
+  .ruban .eyebrow{color:#2a1016}
+  .hero h1{
+    font-size:clamp(3rem,11vw,6.4rem);letter-spacing:.01em;
+    color:var(--creme);text-shadow:0 4px 30px rgba(0,0,0,.4);
+  }
+  .hero h1 em{font-style:italic;color:var(--or-clair);font-weight:600}
+  .lieu{
+    font-family:'Marcellus',serif;letter-spacing:.5em;text-transform:uppercase;
+    font-size:clamp(.9rem,2.6vw,1.25rem);color:var(--or);margin:.9rem 0 1.7rem;
+    padding-left:.5em;
+  }
+  .hero p.intro{
+    font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--texte);
+    opacity:.9;max-width:560px;margin:0 auto 2.2rem;line-height:1.55;
+  }
+  .cta-row{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+  .btn{
+    font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.18em;
+    font-size:.82rem;padding:.95rem 1.7rem;border-radius:3px;cursor:pointer;
+    border:1px solid var(--or);transition:.25s;text-decoration:none;display:inline-block;
+  }
+  .btn-or{background:var(--or);color:var(--encre);border-color:var(--or)}
+  .btn-or:hover{background:var(--or-clair);box-shadow:0 8px 24px rgba(201,162,75,.3)}
+  .btn-ghost{background:transparent;color:var(--or-clair)}
+  .btn-ghost:hover{background:rgba(201,162,75,.12)}
+  .scroll-cue{
+    position:absolute;bottom:1.4rem;left:50%;translate:-50%;z-index:2;
+    font-family:'Marcellus',serif;letter-spacing:.3em;font-size:.7rem;color:var(--or);
+    opacity:.7;animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{50%{transform:translateY(8px)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:5rem 1.4rem;max-width:1180px;margin:0 auto}
+  .sec-head{text-align:center;margin-bottom:3rem}
+  .sec-head h2{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--creme);margin-top:.6rem}
+  .sec-head p{max-width:640px;margin:1rem auto 0;opacity:.85;font-size:1.12rem;line-height:1.55}
+  .parcours{background:var(--encre-2);max-width:none;position:relative}
+  .parcours::before{
+    content:"";position:absolute;inset:0 0 auto;height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);opacity:.5;
+  }
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1180px;margin:0 auto}
+  .step{position:relative;padding:2rem 1.4rem;border:1px solid rgba(201,162,75,.25);border-radius:4px;background:rgba(28,20,32,.5)}
+  .step .num{font-family:'Cormorant Garamond',serif;font-size:3.4rem;color:var(--or);line-height:1;opacity:.85}
+  .step h3{color:var(--creme);font-size:1.7rem;margin:.5rem 0 .6rem}
+  .step p{opacity:.82;line-height:1.5}
+
+  /* ---------- FILTRES + GRILLE ---------- */
+  .controls{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.2rem}
+  .search{
+    flex:1 1 260px;max-width:360px;font-family:'EB Garamond',serif;font-size:16px;
+    padding:.8rem 1rem;background:var(--encre-2);border:1px solid rgba(201,162,75,.3);
+    color:var(--texte);border-radius:3px;
+  }
+  .search::placeholder{color:rgba(239,230,216,.45)}
+  .search:focus{outline:2px solid var(--or);outline-offset:1px}
+  .chips{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+  .chip{
+    font-family:'Marcellus',serif;letter-spacing:.1em;font-size:.78rem;text-transform:uppercase;
+    padding:.6rem 1rem;background:transparent;border:1px solid rgba(201,162,75,.35);
+    color:var(--or-clair);border-radius:40px;cursor:pointer;transition:.2s;
+  }
+  .chip[aria-pressed="true"]{background:var(--or);color:var(--encre);border-color:var(--or)}
+  .chip:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.4rem}
+  .card{
+    position:relative;background:linear-gradient(180deg,var(--creme),var(--creme-2));
+    color:var(--texte-sombre);border-radius:6px;overflow:hidden;cursor:pointer;
+    box-shadow:0 10px 30px var(--ombre);transition:transform .25s, box-shadow .25s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px var(--ombre)}
+  .card:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+  .card-top{height:6px;background:repeating-linear-gradient(90deg,var(--rose) 0 14px,var(--bordeaux) 14px 28px)}
+  .card-body{padding:1.5rem 1.4rem 1.3rem;display:flex;flex-direction:column;flex:1}
+  .card .spe{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;color:var(--bordeaux)}
+  .card h3{font-size:1.85rem;color:var(--texte-sombre);margin:.25rem 0 .5rem;line-height:1.05}
+  .card .adr{font-size:.98rem;opacity:.8;line-height:1.35}
+  .card .desc{margin-top:.7rem;font-size:1rem;line-height:1.45;opacity:.9;flex:1}
+  .accueil{
+    margin-top:1rem;display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;
+    font-family:'Marcellus',serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:.32rem .7rem;border-radius:40px;
+  }
+  .accueil.oui{background:rgba(92,26,46,.12);color:var(--bordeaux);border:1px solid rgba(92,26,46,.4)}
+  .accueil.conf{background:rgba(201,162,75,.16);color:#8a6a1f;border:1px solid rgba(201,162,75,.5)}
+  .fav{
+    position:absolute;top:.7rem;right:.7rem;z-index:3;width:38px;height:38px;border-radius:50%;
+    background:rgba(28,20,32,.55);border:none;cursor:pointer;font-size:1.15rem;line-height:1;
+    color:var(--rose);display:grid;place-items:center;transition:.2s;
+  }
+  .fav:hover{background:rgba(28,20,32,.8);transform:scale(1.08)}
+  .fav[aria-pressed="true"]{color:#fff;background:var(--rose-fonce)}
+  .empty{grid-column:1/-1;text-align:center;padding:3rem 1rem;opacity:.7;font-size:1.15rem}
+
+  /* ---------- MAISON DES COMPAGNONS ---------- */
+  .maison{background:linear-gradient(160deg,var(--bordeaux),var(--encre));max-width:none;border-top:1px solid rgba(201,162,75,.3)}
+  .maison-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center}
+  .maison h2{font-size:clamp(2rem,5vw,3.2rem);color:var(--creme)}
+  .maison p{margin-top:1rem;line-height:1.6;opacity:.92;font-size:1.1rem}
+  .coord{margin-top:1.6rem;list-style:none;display:grid;gap:.7rem}
+  .coord li{display:flex;gap:.8rem;align-items:baseline;font-size:1.05rem}
+  .coord .k{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--or);min-width:88px}
+  .coord a{color:var(--or-clair);text-decoration:none;border-bottom:1px solid rgba(230,205,138,.4)}
+  .plan{
+    position:relative;aspect-ratio:1/1;border-radius:8px;border:1px solid rgba(201,162,75,.4);
+    background:radial-gradient(circle at 50% 45%,rgba(201,162,75,.10),transparent 60%),var(--encre-2);
+    overflow:hidden;
+  }
+  .plan .label{position:absolute;top:.8rem;left:.9rem;font-family:'Marcellus',serif;letter-spacing:.2em;font-size:.66rem;text-transform:uppercase;color:var(--or);opacity:.8}
+  .dot{position:absolute;width:12px;height:12px;background:var(--rose);border-radius:50%;box-shadow:0 0 0 4px rgba(226,154,164,.25);translate:-50% -50%}
+  .dot.cdd{background:var(--or);box-shadow:0 0 0 5px rgba(201,162,75,.3),0 0 14px var(--or)}
+  .dot small{position:absolute;left:14px;top:-4px;white-space:nowrap;font-family:'Space Mono',monospace;font-size:.6rem;color:var(--texte);opacity:.85}
+
+  /* ---------- CANDIDATURE ---------- */
+  .candid{background:var(--encre-2);max-width:none;border-top:1px solid rgba(201,162,75,.3)}
+  .candid-wrap{max-width:760px;margin:0 auto}
+  .form-grid{display:grid;gap:1rem;margin-top:1.6rem}
+  .form-grid label{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--or);display:block;margin-bottom:.35rem}
+  .form-grid input,.form-grid select,.form-grid textarea{
+    width:100%;font-family:'EB Garamond',serif;font-size:16px;padding:.8rem 1rem;
+    background:var(--encre);border:1px solid rgba(201,162,75,.3);color:var(--texte);border-radius:3px;
+  }
+  .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:2px solid var(--or);outline-offset:1px}
+  .form-grid textarea{min-height:110px;resize:vertical;line-height:1.5}
+  .lettre-out{
+    margin-top:1.5rem;background:var(--creme);color:var(--texte-sombre);border-radius:6px;
+    padding:1.6rem;font-size:1.02rem;line-height:1.6;white-space:pre-wrap;display:none;
+    box-shadow:0 10px 30px var(--ombre);
+  }
+  .lettre-out.on{display:block}
+  .lettre-actions{display:flex;gap:.7rem;margin-top:1rem;flex-wrap:wrap}
+
+  /* ---------- MODAL ---------- */
+  .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:1.2rem}
+  .modal.on{display:flex}
+  .modal-bg{position:absolute;inset:0;background:rgba(10,5,12,.72);backdrop-filter:blur(4px)}
+  .modal-card{
+    position:relative;z-index:1;max-width:520px;width:100%;max-height:88dvh;overflow:auto;
+    background:linear-gradient(180deg,var(--creme),var(--creme-2));color:var(--texte-sombre);
+    border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.6);
+  }
+  .modal-top{height:8px;background:repeating-linear-gradient(90deg,var(--rose) 0 16px,var(--bordeaux) 16px 32px)}
+  .modal-inner{padding:2rem 1.9rem 2.2rem}
+  .modal-close{position:absolute;top:.9rem;right:1rem;background:none;border:none;font-size:1.9rem;cursor:pointer;color:var(--bordeaux);line-height:1;z-index:2}
+  .modal-inner .spe{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--bordeaux)}
+  .modal-inner h3{font-size:2.5rem;margin:.3rem 0 1rem;color:var(--texte-sombre)}
+  .modal-inner .row{display:flex;gap:.7rem;margin:.55rem 0;align-items:baseline}
+  .modal-inner .row .k{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;color:var(--bordeaux);min-width:82px}
+  .modal-inner .desc{margin:1.1rem 0;line-height:1.6}
+  .modal-inner .tagline{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
+  .tag{font-family:'Marcellus',serif;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .6rem;background:rgba(92,26,46,.1);color:var(--bordeaux);border-radius:40px}
+  .modal-inner .modal-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+  .modal-cta a{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;padding:.8rem 1.3rem;border-radius:3px;text-decoration:none}
+  .modal-cta .a-tel{background:var(--bordeaux);color:var(--creme)}
+  .modal-cta .a-map{border:1px solid var(--bordeaux);color:var(--bordeaux)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--encre);border-top:1px solid rgba(201,162,75,.25);padding:3rem 1.4rem;text-align:center}
+  footer .note{max-width:680px;margin:0 auto 1.2rem;font-size:.95rem;line-height:1.55;opacity:.7}
+  footer .sig{font-family:'Marcellus',serif;letter-spacing:.28em;text-transform:uppercase;font-size:.72rem;color:var(--or)}
+  .toast{
+    position:fixed;bottom:1.4rem;left:50%;translate:-50% 0;z-index:80;
+    background:var(--or);color:var(--encre);font-family:'Marcellus',serif;letter-spacing:.12em;
+    text-transform:uppercase;font-size:.78rem;padding:.8rem 1.4rem;border-radius:4px;
+    box-shadow:0 10px 30px var(--ombre);opacity:0;pointer-events:none;transition:.3s;
+  }
+  .toast.on{opacity:1;translate:-50% -8px}
+
+  @media(max-width:760px){
+    .maison-wrap{grid-template-columns:1fr}
+    .plan{max-width:380px;margin:0 auto}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .sunburst,.scroll-cue{animation:none}
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="sunburst" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="ruban"><span class="eyebrow">Le Tour de France · Métier de bouche</span></span>
+    <h1>Compagnons<br><em>Pâtissiers</em></h1>
+    <div class="lieu">Reims · Marne</div>
+    <p class="intro">Les maisons rémoises qui transmettent le geste. Un guide pour l'aspirant pâtissier qui veut apprendre auprès d'un maître, dans la tradition du compagnonnage.</p>
+    <div class="cta-row">
+      <a href="#maisons" class="btn btn-or">Voir les maisons</a>
+      <a href="#compagnons" class="btn btn-ghost">La Maison des Compagnons</a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">↓ descendre</div>
+</header>
+
+<!-- PARCOURS -->
+<section class="parcours" aria-labelledby="parcours-t">
+  <div class="sec-head">
+    <span class="eyebrow">La voie</span>
+    <h2 id="parcours-t">Du stagiaire au compagnon</h2>
+    <p>Le compagnonnage se vit autant qu'il s'apprend : le travail en atelier le jour, la vie communautaire à la Maison le soir, puis le voyage.</p>
+  </div>
+  <ol class="steps">
+    <li class="step"><div class="num">1</div><h3>Stagiaire</h3><p>Première année : en entreprise du lundi au vendredi, logé à la Maison, formation au CAP à l'appui. On découvre le métier et la vie de communauté.</p></li>
+    <li class="step"><div class="num">2</div><h3>Aspirant</h3><p>Après le « travail d'adoption », l'aspirant reçoit un nom de pays, la canne et les couleurs. Il s'engage sur la voie du Devoir.</p></li>
+    <li class="step"><div class="num">3</div><h3>Le Tour de France</h3><p>De maison en maison, de ville en ville, on change d'atelier pour multiplier les savoir-faire et forger le caractère.</p></li>
+    <li class="step"><div class="num">4</div><h3>Compagnon</h3><p>Le chef-d'œuvre présenté à ses pairs consacre la réception. Vient alors le devoir de transmettre à son tour.</p></li>
+  </ol>
+</section>
+
+<!-- MAISONS D'ACCUEIL -->
+<section id="maisons" aria-labelledby="maisons-t">
+  <div class="sec-head">
+    <span class="eyebrow">Sélection rémoise</span>
+    <h2 id="maisons-t">Les maisons d'accueil</h2>
+    <p>Des adresses réputées de la pâtisserie, chocolaterie et biscuiterie rémoises — le vivier où se forment les apprentis. Le placement en contrat se coordonne avec la Maison des Compagnons.</p>
+  </div>
+
+  <div class="controls">
+    <input id="search" class="search" type="search" placeholder="Chercher une maison, un quartier…" aria-label="Chercher une maison">
+    <div class="chips" id="chips" role="group" aria-label="Filtrer par spécialité">
+      <button class="chip" data-f="tous" aria-pressed="true">Toutes</button>
+      <button class="chip" data-f="Pâtisserie" aria-pressed="false">Pâtisserie</button>
+      <button class="chip" data-f="Chocolaterie" aria-pressed="false">Chocolaterie</button>
+      <button class="chip" data-f="Boulangerie" aria-pressed="false">Boulangerie-pâtisserie</button>
+      <button class="chip" data-f="Biscuiterie" aria-pressed="false">Biscuiterie</button>
+      <button class="chip" data-f="fav" aria-pressed="false">★ Favoris</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid" aria-live="polite"></div>
+</section>
+
+<!-- MAISON DES COMPAGNONS -->
+<section id="compagnons" class="maison" aria-labelledby="cdd-t">
+  <div class="maison-wrap">
+    <div>
+      <span class="eyebrow">Le point d'entrée officiel</span>
+      <h2 id="cdd-t">La Maison des Compagnons · Reims</h2>
+      <p>Toute candidature au compagnonnage pâtissier passe par la Maison de Reims : elle forme au CAP, héberge les jeunes et met en relation avec les entreprises d'accueil. Journées portes ouvertes en janvier et en mars.</p>
+      <ul class="coord">
+        <li><span class="k">Adresse</span><span>115 boulevard Charles Arnould, 51100 Reims</span></li>
+        <li><span class="k">CFA métier</span><span>Atelier pâtisserie — 42 rue de Reims, Muizon</span></li>
+        <li><span class="k">Téléphone</span><a href="tel:+33326029031">03 26 02 90 31</a></li>
+        <li><span class="k">Courriel</span><a href="mailto:compagnonsreims@compagnons-du-devoir.com">compagnonsreims@compagnons-du-devoir.com</a></li>
+      </ul>
+      <div class="cta-row" style="justify-content:flex-start;margin-top:1.8rem">
+        <a href="#candidature" class="btn btn-or">Préparer ma candidature</a>
+      </div>
+    </div>
+    <div class="plan" aria-label="Plan indicatif des adresses à Reims">
+      <span class="label">Plan indicatif · Reims</span>
+      <!-- positions relatives approximatives -->
+      <span class="dot cdd" style="left:64%;top:30%"><small>Maison des Compagnons</small></span>
+      <span class="dot" style="left:47%;top:52%"><small>Pl. d'Erlon</small></span>
+      <span class="dot" style="left:53%;top:46%"><small>Cours Langlet</small></span>
+      <span class="dot" style="left:58%;top:44%"><small>Rue Cérès</small></span>
+      <span class="dot" style="left:12%;top:60%"><small>Muizon · CFA</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATURE -->
+<section id="candidature" class="candid" aria-labelledby="cand-t">
+  <div class="candid-wrap">
+    <div class="sec-head" style="margin-bottom:.5rem">
+      <span class="eyebrow">Passer à l'acte</span>
+      <h2 id="cand-t">Rédiger sa lettre de motivation</h2>
+      <p>Remplissez les champs : la lettre se compose seule, prête à copier ou à envoyer à la Maison de Reims.</p>
+    </div>
+    <div class="form-grid">
+      <div><label for="c-nom">Nom et prénom</label><input id="c-nom" type="text" placeholder="Ex. Aylina Julienne"></div>
+      <div><label for="c-age">Âge / situation</label><input id="c-age" type="text" placeholder="Ex. 17 ans, en fin de 3e"></div>
+      <div><label for="c-maison">Maison qui vous inspire (facultatif)</label><input id="c-maison" type="text" placeholder="Ex. Waïda & Fils"></div>
+      <div><label for="c-mot">Ce qui vous attire dans le métier</label><textarea id="c-mot" placeholder="Le geste, la matière, la transmission…"></textarea></div>
+      <div class="cta-row" style="justify-content:flex-start">
+        <button class="btn btn-or" id="c-gen" type="button">Composer la lettre</button>
+      </div>
+    </div>
+    <div class="lettre-out" id="lettre" aria-live="polite"></div>
+    <div class="lettre-actions" id="lettre-actions" style="display:none">
+      <button class="btn btn-ghost" id="c-copy" type="button">Copier</button>
+      <a class="btn btn-or" id="c-mail" href="#">Ouvrir dans le courrier</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-nom">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-card">
+    <div class="modal-top"></div>
+    <button class="modal-close" data-close aria-label="Fermer">×</button>
+    <div class="modal-inner">
+      <span class="spe" id="m-spe"></span>
+      <h3 id="m-nom"></h3>
+      <div class="row"><span class="k">Adresse</span><span id="m-adr"></span></div>
+      <div class="row" id="m-tel-row"><span class="k">Téléphone</span><span id="m-tel"></span></div>
+      <div class="row"><span class="k">Accueil</span><span id="m-acc"></span></div>
+      <p class="desc" id="m-desc"></p>
+      <div class="tagline" id="m-tags"></div>
+      <div class="modal-cta" id="m-cta"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="note">Guide indépendant à visée d'orientation. Les maisons citées sont des adresses artisanales rémoises reconnues ; leur statut exact d'entreprise d'accueil et les places disponibles sont à confirmer directement auprès de la Maison des Compagnons du Devoir de Reims.</p>
+  <p class="sig">Studio Niko Design · Loire-Atlantique</p>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ================= safeStorage (IndexedDB → localStorage → mémoire) ================= */
+const safeStorage = (() => {
+  const mem = new Map();
+  let ls = null;
+  try { const t='__t'; window.localStorage.setItem(t,'1'); window.localStorage.removeItem(t); ls = window.localStorage; } catch(e){ ls = null; }
+  return {
+    get(k){ try{ return ls ? ls.getItem(k) : (mem.has(k)?mem.get(k):null); }catch(e){ return mem.get(k)??null; } },
+    set(k,v){ try{ ls ? ls.setItem(k,v) : mem.set(k,v); }catch(e){ mem.set(k,v); } }
+  };
+})();
+
+/* ================= Données ================= */
+const MAISONS = [
+  { id:'waida', nom:'Waïda & Fils', spe:'Pâtisserie', quartier:"Place d'Erlon",
+    adr:"3-5 place d'Erlon, 51100 Reims", tel:'03 26 47 44 49',
+    desc:"Institution familiale depuis trois générations, dans un écrin art déco de la Reconstruction (vitraux Simon-Marq). Viennoiseries pur beurre, salon de thé, chocolat chaud maison.",
+    accueil:'conf', tags:['Pâtisserie','Viennoiserie','Salon de thé','Institution'] },
+  { id:'friande', nom:'La Petite Friande', spe:'Chocolaterie', quartier:'Cours Langlet',
+    adr:'15 cours Langlet, 51100 Reims', tel:'',
+    desc:"La plus ancienne chocolaterie de Reims (1832), maison Jubin. Ganaches, pralinés, macarons et créations déposées : un terrain d'excellence pour le geste du chocolatier.",
+    accueil:'conf', tags:['Chocolaterie','Macarons','Historique'] },
+  { id:'deleans', nom:'Chocolaterie Deléans', spe:'Chocolaterie', quartier:'Rue Cérès',
+    adr:'20 rue Cérès, 51100 Reims', tel:'',
+    desc:"Maison de chocolat au cœur du centre historique, réputée pour ses tablettes, moulages et confiseries fines.",
+    accueil:'conf', tags:['Chocolaterie','Confiserie','Centre-ville'] },
+  { id:'palais', nom:'Le Palais du Dessert', spe:'Pâtisserie', quartier:'Boulevard Dauphinot',
+    adr:'138 boulevard Dauphinot, 51100 Reims', tel:'',
+    desc:"Boulangerie-pâtisserie de quartier ouverte tôt, entremets et gâteaux du jour — un cadre classique pour se former à la production quotidienne.",
+    accueil:'conf', tags:['Pâtisserie','Boulangerie','Entremets'] },
+  { id:'douceurs', nom:'Douceurs Macarons', spe:'Pâtisserie', quartier:'Rue Chanzy',
+    adr:'40 rue Chanzy, 51100 Reims', tel:'',
+    desc:"Adresse dédiée au macaron et aux petites douceurs, tout près de la cathédrale. Un focus précis sur une technique exigeante.",
+    accueil:'conf', tags:['Pâtisserie','Macarons'] },
+  { id:'normand', nom:'Pâtisserie Yoann Normand', spe:'Pâtisserie', quartier:'Tinqueux',
+    adr:'Tinqueux (agglomération de Reims)', tel:'',
+    desc:"Créations artisanales de haute qualité en périphérie rémoise. Maison qui recrute régulièrement des pâtissiers — bon signe pour un contrat d'apprentissage.",
+    accueil:'oui', tags:['Pâtisserie','Créatif','Recrute'] },
+  { id:'feuillette', nom:'Boulangerie Feuillette', spe:'Boulangerie', quartier:'Cormontreuil',
+    adr:'Cormontreuil (agglomération de Reims)', tel:'',
+    desc:"Grande boulangerie-pâtisserie à l'esprit convivial. Offres d'alternance publiées côté pâtisserie : cadre structuré pour débuter.",
+    accueil:'oui', tags:['Boulangerie','Pâtisserie','Alternance'] },
+  { id:'piano', nom:'Au Piano des Chefs', spe:'Pâtisserie', quartier:'Cathédrale',
+    adr:'Reims — quartier Cathédrale', tel:'',
+    desc:"Ateliers culinaires et gastronomiques d'un chef pâtissier passé par de grands hôtels. Transmission et apprentissage de la pâtisserie au programme.",
+    accueil:'oui', tags:['Pâtisserie','Ateliers','Transmission'] },
+  { id:'fossier', nom:'Biscuiterie Fossier', spe:'Biscuiterie', quartier:'Reims',
+    adr:'Reims (biscuiterie emblématique)', tel:'',
+    desc:"Le fabricant du biscuit rose de Reims, emblème sucré de la ville depuis 1756. Univers biscuitier et patrimonial unique dans la région.",
+    accueil:'conf', tags:['Biscuiterie','Biscuit rose','Patrimoine'] }
+];
+
+/* ================= État ================= */
+let filtre = 'tous';
+let recherche = '';
+let favoris = new Set();
+try { const raw = safeStorage.get('cpr_favoris'); if(raw) favoris = new Set(JSON.parse(raw)); } catch(e){}
+
+const $ = id => document.getElementById(id);
+const grid = $('grid');
+
+/* ================= Rendu grille ================= */
+function accLabel(a){ return a==='oui' ? 'Recrute des apprentis' : 'Accueil à confirmer'; }
+
+function render(){
+  const q = recherche.trim().toLowerCase();
+  const list = MAISONS.filter(m=>{
+    if(filtre==='fav' && !favoris.has(m.id)) return false;
+    if(filtre!=='tous' && filtre!=='fav' && m.spe!==filtre) return false;
+    if(q){
+      const hay = (m.nom+' '+m.quartier+' '+m.adr+' '+m.spe+' '+m.tags.join(' ')).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  grid.innerHTML = '';
+  if(!list.length){
+    grid.innerHTML = '<div class="empty">Aucune maison ne correspond. Élargissez la recherche ou revenez aux filtres.</div>';
+    return;
+  }
+  list.forEach(m=>{
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.tabIndex = 0;
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label', m.nom + ' — ' + m.spe);
+    const pressed = favoris.has(m.id);
+    card.innerHTML =
+      '<button class="fav" aria-pressed="'+pressed+'" aria-label="Ajouter '+m.nom+' aux favoris">'+(pressed?'♥':'♡')+'</button>'+
+      '<div class="card-top"></div>'+
+      '<div class="card-body">'+
+        '<span class="spe">'+m.spe+' · '+m.quartier+'</span>'+
+        '<h3>'+m.nom+'</h3>'+
+        '<div class="adr">'+m.adr+'</div>'+
+        '<p class="desc">'+m.desc+'</p>'+
+        '<span class="accueil '+(m.accueil==='oui'?'oui':'conf')+'">'+accLabel(m.accueil)+'</span>'+
+      '</div>';
+    // Favori
+    card.querySelector('.fav').addEventListener('click', e=>{
+      e.stopPropagation();
+      toggleFav(m.id);
+    });
+    // Ouvrir modal
+    const open = ()=>openModal(m);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+    grid.appendChild(card);
+  });
+}
+
+function toggleFav(id){
+  if(favoris.has(id)) favoris.delete(id); else favoris.add(id);
+  safeStorage.set('cpr_favoris', JSON.stringify([...favoris]));
+  render();
+  showToast(favoris.has(id)?'Ajouté aux favoris':'Retiré des favoris');
+}
+
+/* ================= Filtres ================= */
+$('chips').addEventListener('click', e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  [...$('chips').children].forEach(c=>c.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  filtre = b.dataset.f;
+  render();
+});
+$('search').addEventListener('input', e=>{ recherche = e.target.value; render(); });
+
+/* ================= Modal ================= */
+const modal = $('modal');
+function openModal(m){
+  $('m-spe').textContent = m.spe + ' · ' + m.quartier;
+  $('m-nom').textContent = m.nom;
+  $('m-adr').textContent = m.adr;
+  const telRow = $('m-tel-row');
+  if(m.tel){ $('m-tel').textContent = m.tel; telRow.style.display=''; }
+  else { telRow.style.display='none'; }
+  $('m-acc').textContent = accLabel(m.accueil);
+  $('m-desc').textContent = m.desc;
+  $('m-tags').innerHTML = m.tags.map(t=>'<span class="tag">'+t+'</span>').join('');
+  const cta = $('m-cta'); cta.innerHTML='';
+  if(m.tel){
+    const a = document.createElement('a'); a.className='a-tel';
+    a.href = 'tel:+33'+m.tel.replace(/\D/g,'').replace(/^0/,''); a.textContent='Appeler';
+    cta.appendChild(a);
+  }
+  const map = document.createElement('a'); map.className='a-map'; map.target='_blank'; map.rel='noopener';
+  map.href = 'https://www.openstreetmap.org/search?query='+encodeURIComponent(m.adr);
+  map.textContent='Voir sur la carte';
+  cta.appendChild(map);
+  modal.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){ modal.classList.remove('on'); document.body.style.overflow=''; }
+modal.addEventListener('click', e=>{ if(e.target.hasAttribute('data-close')) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('on')) closeModal(); });
+
+/* ================= Candidature ================= */
+const DEST = 'compagnonsreims@compagnons-du-devoir.com';
+$('c-gen').addEventListener('click', ()=>{
+  const nom = $('c-nom').value.trim() || '[Votre nom]';
+  const age = $('c-age').value.trim();
+  const maison = $('c-maison').value.trim();
+  const mot = $('c-mot').value.trim() || "la beauté du geste et l'envie d'apprendre un métier concret et exigeant";
+  const situ = age ? (' ('+age+')') : '';
+  const maisonLine = maison ? ("\n\nLa maison " + maison + " incarne pour moi cette exigence, et je serais fier(e) d'y faire mes premiers pas.") : "";
+  const lettre =
+"Objet : Candidature au compagnonnage — CAP Pâtissier, Maison de Reims\n\n"+
+"Madame, Monsieur,\n\n"+
+"Je me permets de vous adresser ma candidature pour intégrer la formation de pâtissier chez les Compagnons du Devoir de Reims."+situ+"\n\n"+
+"Ce qui m'attire dans ce métier, c'est "+mot+". Au-delà de la technique, la voie du compagnonnage — la vie à la Maison, la transmission entre pairs et le Tour de France — correspond à la manière dont je souhaite grandir et me construire."+maisonLine+"\n\n"+
+"Je suis prêt(e) à m'engager pleinement : travail en atelier, préparation du CAP et vie de communauté. Je reste à votre disposition pour un entretien et la présentation d'un dossier.\n\n"+
+"Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations respectueuses.\n\n"+
+nom;
+  const out = $('lettre'); out.textContent = lettre; out.classList.add('on');
+  $('lettre-actions').style.display='flex';
+  const subject = 'Candidature compagnonnage — CAP Pâtissier';
+  $('c-mail').href = 'mailto:'+DEST+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lettre);
+  out.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+$('c-copy').addEventListener('click', async ()=>{
+  const txt = $('lettre').textContent;
+  try{ await navigator.clipboard.writeText(txt); showToast('Lettre copiée'); }
+  catch(e){
+    const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta);
+    ta.select(); try{ document.execCommand('copy'); showToast('Lettre copiée'); }catch(_){ showToast('Copie indisponible'); }
+    document.body.removeChild(ta);
+  }
+});
+
+/* ================= Toast ================= */
+let toastT;
+function showToast(msg){
+  const t=$('toast'); t.textContent=msg; t.classList.add('on');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),1800);
+}
+
+/* ================= Init ================= */
+render();
+</script>
+</body>
+</html>
